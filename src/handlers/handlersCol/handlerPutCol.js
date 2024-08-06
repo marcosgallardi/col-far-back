@@ -1,5 +1,8 @@
-const handlerPutCol = (req, res) => {
+const ctrlPutCol = require("../../controllers/ctrlCol/ctrlPutCol");
+
+const handlerPutCol = async(req, res) => {
   const {
+    id,
     ciudad,
     logo,
     nosotrosImg,
@@ -14,7 +17,8 @@ const handlerPutCol = (req, res) => {
     contraseña,
   } = req.body;
   try {
-    const { data } = ctrlPutCol({
+    const data = await ctrlPutCol({
+      id,
       ciudad,
       logo,
       nosotrosImg,
@@ -28,6 +32,7 @@ const handlerPutCol = (req, res) => {
       email,
       contraseña,
     });
+    console.log(data,"aca!!!!!!!!!!!!!!!")
     if (data) {
       res.status(200).json(data);
     } else {
@@ -35,7 +40,7 @@ const handlerPutCol = (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: error.message });
-    throw new Error(error.message);
+    throw new Error(error);
   }
 };
 
