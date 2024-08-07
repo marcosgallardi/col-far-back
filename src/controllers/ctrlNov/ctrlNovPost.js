@@ -20,7 +20,7 @@ const ctrlNovPost = async (imgNov, titulo, subtitulo, description) => {
     }
   } catch (error) {
     await t.rollback();
-    throw error;
+    throw error.message;
   }
 };
 

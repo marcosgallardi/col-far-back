@@ -42,7 +42,7 @@ const ctrlPutCol = async ({
     await colegio.save({ transaction: t });
 
     await t.commit();
-    console.log(colegio);
+    
     return colegio;
   } catch (error) {
     await t.rollback();
