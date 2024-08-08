@@ -1,19 +1,16 @@
-const { Novedades, sequelize } = require("../../DB_Connection");
+const { Novedades } = require("../../DB_Connection");
 const ctrlNovGet = async (id) => {
-  const t = await sequelize.transaction();
-
   try {
     if (id) {
-      const data = await Novedades.findByPk(id, { transaction: t });
-      await t.commit();
+      const data = await Novedades.findByPk(id);
+
       return data;
     } else {
-      const data = await Novedades.findAll({ transaction: t });
-      await t.commit();
+      const data = await Novedades.findAll();
+
       return data;
     }
   } catch (error) {
-    await t.rollback();
     throw error.message;
   }
 };

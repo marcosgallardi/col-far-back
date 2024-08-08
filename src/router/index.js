@@ -1,17 +1,18 @@
 const { Router } = require("express");
 
 const router = Router();
-const colegiosRouter = require("./colegiosRouter");
-const comDirRouter = require("./comDirRouter");
-const farmRouter = require("./farmRouter");
-const turFarm = require("./turFarmRouter");
-const novRouter = require("./novRouter");
+// const comDirRouter = require("./comDirRouter");
 
+const colegiosRouter = require("./colegiosRouter");
+const novRouter = require("./novRouter");
+const farmRouter = require("./farmRouter");
 
 router.use("/colegios", colegiosRouter);
 // router.use("/comDir", comDirRouter);
-// router.use("/farm", farmRouter);
 router.use("/nov", novRouter);
-// router.use("/turFarm", turFarm);
+
+
+router.use("/farm", farmRouter);
+
 
 module.exports = router;
